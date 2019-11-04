@@ -1,0 +1,53 @@
+---
+name: lab-08
+break: true
+indent: 4
+---
+src/main:
+    java:
+        election/RunElection.java:
+            ConfirmFileExists
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+            MatchFileFragment --fragment "while (" --count 2
+            MatchFileFragment --fragment "new Scanner" --count 2
+            MatchFileFragment --fragment ".hasNext()" --count 2 --exact
+            MatchFileFragment --fragment ".getWinner()" --count 1 --exact
+            MatchFileFragment --fragment ".castBallot(" --count 1 --exact
+
+src/main:
+    java:
+        election/Ballot.java:
+            ConfirmFileExists
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+            MatchFileFragment --fragment "public void castBallot(String" --count 1
+            MatchFileFragment --fragment ".addVote()" --count 1 
+            MatchFileFragment --fragment "this.form.set(" --count 1
+            MatchFileFragment --fragment "this.form.indexOf(" --count 1
+            MatchFileFragment --fragment "for (" --count 3
+            MatchFileFragment --fragment "while (" --count 0 --exact
+            MatchFileFragment --fragment "public Candidate getWinner()" --count 1 --exact
+            MatchFileFragment --fragment ".getVotes()" --count 3
+
+src/main:
+    java:
+        election/Candidate.java:
+            ConfirmFileExists
+            MatchFileFragment --fragment "TODO" --count 0 --exact
+            MatchFileFragment --fragment "{Your Name Here}" --count 0 --exact
+            MatchFileFragment --fragment "addVote()" --count 1 --exact
+            MatchFileFragment --fragment "++;" --count 1 --exact
+            MatchFileFragment --fragment "public String toString()" --count 1 --exact
+
+writing:
+    reflection.md:
+        ConfirmFileExists
+        CountFileWords --count 500
+        MatchFileFragment --fragment "TODO" --count 0 --exact
+        CountMarkdownTags --tag "heading" --count 9
+        CountMarkdownTags --tag "code_block" --count 3
+            
+CountCommits --count 5
+ExecuteCommand --command "gradle build"
+CountCommandOutput --command "gradle run" --count 16
